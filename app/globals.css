@@ -91,6 +91,8 @@
   padding: 12mm;
   border: 1px solid #bfdbfe;
   box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .bulletin-logo-frame {

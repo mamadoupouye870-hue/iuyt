@@ -15,14 +15,14 @@ const MODULE_TONES = [
   "border-blue-300 bg-blue-50/70",
   "border-emerald-300 bg-emerald-50/70",
   "border-orange-300 bg-orange-50/70",
-  "border-indigo-300 bg-indigo-50/70",
+  "border-sky-300 bg-sky-50/70",
 ];
 
 const MODULE_HEADINGS = [
   "bg-blue-100 text-blue-900",
   "bg-emerald-100 text-emerald-900",
   "bg-orange-100 text-orange-900",
-  "bg-indigo-100 text-indigo-900",
+  "bg-sky-100 text-sky-900",
 ];
 
 function formatScore(value: number): string {
@@ -45,7 +45,7 @@ export function PrintableBulletin({ bulletin, context, onBack }: PrintableBullet
         <Button size="sm" onClick={() => window.print()}><Printer className="w-4 h-4 mr-2" /> Imprimer / PDF</Button>
       </div>
 
-      <article className="bulletin-paper mx-auto bg-white text-slate-900">
+      <article className="bulletin-paper mx-auto bg-white text-slate-900 print-color-exact">
         <header className="border-b-[3px] border-blue-700 pb-3">
           <div className="grid grid-cols-[1fr_auto] gap-5 items-center">
             <div className="flex items-center gap-4 min-w-0">
@@ -57,7 +57,7 @@ export function PrintableBulletin({ bulletin, context, onBack }: PrintableBullet
                 <p className="mt-1 text-sm italic text-blue-800">Former aujourd'hui les leaders de demain</p>
               </div>
             </div>
-            <dl className="min-w-[220px] border-l-2 border-blue-700 pl-5 text-xs sm:text-sm">
+            <dl className="min-w-[220px] border-l-2 border-blue-700 pl-5 text-xs leading-5 sm:text-sm">
               <InfoLine label="Année académique" value={context.academicYear?.name ?? "—"} />
               <InfoLine label="Programme / Formation" value={context.program?.name ?? context.course?.name ?? "—"} />
               <InfoLine label="Classe" value={context.classItem?.name ?? "—"} />
@@ -66,7 +66,7 @@ export function PrintableBulletin({ bulletin, context, onBack }: PrintableBullet
           </div>
         </header>
 
-        <section className="mt-3 rounded-lg bg-gradient-to-r from-blue-800 to-blue-700 px-4 py-3 text-center text-white">
+        <section className="mt-3 rounded-lg bg-blue-800 px-4 py-3 text-center text-white">
           <h2 className="text-2xl font-extrabold tracking-wide">BULLETIN DE NOTES</h2>
           <p className="text-base font-semibold">Étudiant</p>
         </section>
@@ -102,7 +102,7 @@ export function PrintableBulletin({ bulletin, context, onBack }: PrintableBullet
               const heading = MODULE_HEADINGS[index % MODULE_HEADINGS.length];
               return (
                 <div key={module.moduleId} className={`break-inside-avoid border-t ${tone}`}>
-                  <div className={`px-3 py-2 text-sm font-extrabold uppercase ${heading}`}>
+                  <div className={`px-3 py-2 text-sm font-extrabold uppercase tracking-wide ${heading}`}>
                     Module {index + 1} : {module.moduleName}{module.moduleCode ? ` (${module.moduleCode})` : ""}
                   </div>
                   {module.subjects.map((subject) => (

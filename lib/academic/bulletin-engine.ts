@@ -218,7 +218,7 @@ export async function computeClassBulletins(
 
   const { data: allGrades } = await supabase
     .from("grades")
-    .select("*, assessments(*)")
+    .select("*, assessments(*, subjects(*))")
     .in("assessment_id", assessmentIds)
     .in("status", ["submitted", "validated"]) as { data: GradeWithAssessment[] | null };
 
